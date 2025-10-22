@@ -109,44 +109,48 @@
 
         /* Header Section */
         .header {
-            text-align: center;
-            height: 80vh;
+            text-align: left;
+            height: 70vh;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 6vh 0;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: stretch;
+            padding: 6vh 3vw;
             background: linear-gradient(135deg, rgba(100, 255, 218, 0.4) 0%, rgba(138, 43, 226, 0.4) 100%);
             border-radius: 20px;
-            margin: 10vh auto;
+            margin: 15vh auto;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(100, 255, 218, 0.2);
+            gap: 20px;
         }
 
-        .header-center {
+        .header-image {
+            width: 36%;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100%;
-            width: 100%;
+        }
+
+        .header-content {
+            width: 60%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 3rem;
         }
 
         .header-center .subtitle {
             text-align: left;
             align-self: flex-start;
-            padding: 0% 5%;
             max-width: 100%;
         }
 
         .profile-img {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            border: 4px solid #64ffda;
-            box-shadow: 0 0 30px rgba(100, 255, 218, 0.5);
-            margin-bottom: 40px;
-            animation: glow 3s ease-in-out infinite alternate;
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            object-fit: cover;
         }
 
         @keyframes glow {
@@ -158,43 +162,44 @@
             font-size: 3.5rem;
             font-weight: 700;
             color: #64ffda;
-            margin-bottom: 30px;
+            margin: 0;
             animation: fadeInUp 1s ease-out;
         }
 
         .subtitle {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             color: #e3e6f3;
-            max-width: 90%;
+            max-width: 100%;
             margin: 0;
             text-align: left;
             line-height: 1.6;
             animation: fadeInUp 1s ease-out 0.2s both;
         }
         
-        .subtitle + .subtitle {
-            margin-top: 18px;
+        .subtitle-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1.6em;
         }
 
         .scroll-indicator {
             display: inline-block;
             font-size: 1.1rem;
             font-weight: 600;
-            color: #fafafa;
-            background: linear-gradient(90deg, #64b1ff 0%, #a855f7 100%);
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.2);
             border: none;
             border-radius: 30px;
             padding: 14px 36px;
-            box-shadow: 0 4px 24px 0 rgba(100, 255, 218, 0.15);
             animation: fadeInUp 1s ease-out 0.4s both;
             cursor: pointer;
-            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+            transition: all 0.3s ease;
             text-decoration: none;
         }
         .scroll-indicator:hover {
-            background: linear-gradient(45deg, #64b1ff 0%, #a855f7 100%);
-            color: #fff;
-            box-shadow: 0 6px 32px 0 rgba(168, 85, 247, 0.18);
+            background: linear-gradient(135deg, #4a90e2 0%, #7b68ee 50%, #8a2be2 100%);
+            border: 2px solid transparent;
+            color: #ffffff;
         }
 
         /* Projects Section */
@@ -203,10 +208,10 @@
         }
 
         .section-title {
-            text-align: center;
+            text-align: left;
             font-size: 2.5rem;
             font-weight: 700;
-            margin-bottom: 60px;
+            margin-bottom: 30px;
             background: linear-gradient(45deg, #ffffff, #64ffda);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -214,7 +219,7 @@
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: 1fr;
             gap: 30px;
             margin-top: 40px;
         }
@@ -234,6 +239,11 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            display: flex;
+            align-items: stretch;
+            justify-content: space-between;
+            gap: 20px;
+            min-height: 280px;
         }
 
         .project-card::before {
@@ -258,15 +268,18 @@
         }
 
         .project-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(45deg, #64ffda, #a855f7);
+            width: 36%;
+            height: 100%;
             border-radius: 15px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+        
+        .project-content {
+            width: 60%;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-            font-size: 1.5rem;
+            flex-direction: column;
+            justify-content: flex-start;
         }
 
         .project-title {
@@ -283,9 +296,7 @@
         }
 
         .project-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
+            margin-top: auto;
         }
 
         .btn {
@@ -359,15 +370,40 @@
             }
             
             .header {
-                height: 90vh;
-                padding: 4vh 0;
-                margin: 5vh auto;
+                height: 80vh;
+                padding: 4vh 20px;
+                margin: 10vh auto;
+                flex-direction: column;
+                text-align: center;
+                justify-content: flex-start;
+                gap: 40px;
+            }
+            
+            .header-image {
+                width: 100%;
+                height: 30%;
+                flex: 1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .header-content {
+                width: 100%;
+                align-items: center;
+                padding: 0 20px;
+                gap: 0.5rem;
+                margin-top: -10px;
+            }
+            
+            .subtitle-group {
+                gap: 0.8em;
             }
             
             .profile-img {
-                width: 120px;
-                height: 120px;
-                margin-bottom: 20px;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
             }
             
             .intro-text {
@@ -376,7 +412,7 @@
             }
             
             .subtitle {
-                font-size: 1.1rem;
+                font-size: 0.9rem;
                 max-width: 95%;
             }
             
@@ -385,38 +421,6 @@
                 padding: 10px 24px;
             }
             
-            .header-actions {
-                flex-direction: column;
-                gap: 16px;
-                padding-top: 20px;
-            }
-            
-            .header-actions .scroll-indicator {
-                min-width: 200px;
-                padding: 10px 20px;
-            }
-
-            @media (max-width: 768px) {
-            .header-actions {
-                flex-direction: column !important;
-                gap: 16px;
-                padding-top: 20px;
-            }
-            
-            .header-actions .scroll-indicator {
-                min-width: 140px;
-                padding: 10px 20px;
-                font-size: 0.8rem;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .header-actions .scroll-indicator {
-                min-width: 100px;
-                font-size: 0.7rem;
-                padding: 8px 16px;
-            }
-        }
             .section-title {
                 font-size: 2rem;
                 margin-bottom: 40px;
@@ -426,8 +430,19 @@
                 padding: 20px;
             }
             
+            .project-card {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
             .project-icon {
+                width: 100%;
                 height: 200px !important;
+                border-radius: 15px;
+            }
+            
+            .project-content {
+                width: 100%;
             }
             
             .project-title {
@@ -471,11 +486,6 @@
                 font-size: 1rem;
             }
             
-            .profile-img {
-                width: 100px;
-                height: 100px;
-            }
-            
             .header-actions .scroll-indicator {
                 min-width: 140px;
                 font-size: 0.8rem;
@@ -484,6 +494,7 @@
             
             .project-icon {
                 height: 180px !important;
+                border-radius: 15px;
             }
         }
 
@@ -568,16 +579,38 @@
             flex-direction: row;
             justify-content: center;
             align-items: center;
-            gap: 18px;
-            margin-top: auto;
-            padding-top: 40px;
+            gap: 1.8rem;
+            width: 100%;
         }
         .header-actions .scroll-indicator {
             margin-top: 0;
             padding-top: 0;
             padding: 14px 36px;
-            min-width: 220px;
+            width: 100%;
             text-align: center;
+        }
+        
+        /* Mobile header actions - override base styles */
+        @media (max-width: 768px) {
+            .header-actions {
+                flex-direction: column !important;
+                gap: 16px;
+                padding-top: 20px;
+            }
+            
+            .header-actions .scroll-indicator {
+                min-width: 140px;
+                padding: 10px 20px;
+                font-size: 0.8rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .header-actions .scroll-indicator {
+                min-width: 140px;
+                font-size: 0.8rem;
+                padding: 8px 16px;
+            }
         }
         .site-footer {
             width: 100%;
@@ -670,15 +703,19 @@
     <div class="container">
         <!-- Header Section -->
         <div class="header">
-            <div class="header-center">
+            <div class="header-image">
                 <img src="profile.png" alt="Linda Pan" class="profile-img">
-                <h1 class="intro-text">👋 Hi, I'm Linda Pan</h1>
-                <p class="subtitle">I am a Product Manager passionate about driving AI-powered innovation and transforming ideas into scalable solutions.</p>
-                <p class="subtitle">I bring three years of experience in Product and Design Strategy at Accenture. I am currently pursuing a Master of Integrated Innovation for Products & Services (MIIPS) at Carnegie Mellon University.</p>
             </div>
-            <div class="header-actions">
-                <button class="scroll-indicator">Explore My Projects</button>
-                <a href="https://www.linkedin.com/in/linda-y-pan" target="_blank" class="scroll-indicator">Let's Connect</a>
+            <div class="header-content">
+                <h1 class="intro-text">👋 Hi, I'm Linda Pan</h1>
+                <div class="subtitle-group">
+                    <p class="subtitle">I am a Product Manager passionate about driving AI-powered innovation and transforming ideas into scalable solutions.</p>
+                    <p class="subtitle">I bring 4+ years of experience in Product Management and Design Strategy at <strong style="color: #64ffda;">Accenture</strong> and beyond. I am currently pursuing a <strong style="color: #64ffda;">Master of Integrated Innovation for Products & Services (MIIPS)</strong> at <strong style="color: #64ffda;">Carnegie Mellon University</strong>.</p>
+                </div>
+                <div class="header-actions">
+                    <button class="scroll-indicator">Explore My Projects</button>
+                    <a href="https://www.linkedin.com/in/linda-y-pan" target="_blank" class="scroll-indicator">Let's Connect</a>
+                </div>
             </div>
         </div>
 
@@ -687,77 +724,106 @@
             <h2 class="section-title">Featured Projects</h2>
             
             <div class="projects-grid">
+                <!-- Project 5: WuXi Biologics Cloud-Based Client Portal -->
+                <div class="project-card fade-in">
+                    <img class="project-icon" src="project-5.png" alt="Project Image">
+                    <div class="project-content">
+                        <h3 class="project-title">🧪 WuXi Biologics Cloud-Based Client Portal</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">B2B</span>
+                            <span class="project-tag">Pharmaceutical</span>
+                        </div>
+                        <p class="project-description">
+                            Drove iterative innovation for WuXi Biologics' cloud-based client collaboration portal, translated business goals into user stories, prioritized feature roadmaps, and created product wireframes. <strong class="highlight-teal">Projected to increase workflow efficiency by 50% and elevate customer satisfaction to 96%</strong>.
+                        </p>
+                        <div class="project-buttons">
+                            <ul class="project-links">
+                                <li><span class="arrow">&#8594;</span> <a href="video-player.html?video=project_5_demo.mp4" target="_blank" rel="noopener">Watch Video Demo</a></li>
+                                <li><span class="arrow">&#8594;</span> <a href="video-player.html?video=project_5_reflection.mp4" target="_blank" rel="noopener">View My Reflections</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Project 1: Pharmaceutical System -->
                 <div class="project-card fade-in">
-                    <img class="project-icon" src="project-1.jpg" alt="Project Image" style="height:300px;width:100%;object-fit:cover;border-radius:15px;">
-                    <h3 class="project-title">💊 Pharmaceutical Document Approval System</h3>
-                    <div class="project-tags">
-                        <span class="project-tag">B2B</span>
-                        <span class="project-tag">Pharmaceutical</span>
-                    </div>
-                    <p class="project-description">
-                        Delivered a Power Apps-based approval management system for a leading Japanese pharmaceutical company, <strong class="highlight-teal">reducing processing time by 27%</strong> through user-centered design and cross-functional collaboration.
-                    </p>
-                    <div class="project-buttons">
-                        <ul class="project-links">
-                            <li><span class="arrow">&#8594;</span> <a href="project_1.pdf" target="_blank" rel="noopener">View Project Summary</a></li>
-                        </ul>
+                    <img class="project-icon" src="project-1.jpg" alt="Project Image">
+                    <div class="project-content">
+                        <h3 class="project-title">💊 Pharmaceutical Document Approval System</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">B2B</span>
+                            <span class="project-tag">Pharmaceutical</span>
+                        </div>
+                        <p class="project-description">
+                            Delivered a Power Apps-based approval management system for a leading Japanese pharmaceutical company, <strong class="highlight-teal">reducing processing time by 27%</strong> through user-centered design and cross-functional collaboration.
+                        </p>
+                        <div class="project-buttons">
+                            <ul class="project-links">
+                                <li><span class="arrow">&#8594;</span> <a href="project_1.pdf" target="_blank" rel="noopener">View Project Summary</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Project 2: ATI Capstone -->
                 <div class="project-card fade-in">
-                    <img class="project-icon" src="project-2.jpg" alt="Project Image" style="height:300px;width:100%;object-fit:cover;border-radius:15px;">
-                    <h3 class="project-title">♻️ ATI Capstone Project</h3>
-                    <div class="project-tags">
-                        <span class="project-tag">Product Strategy</span>
-                        <span class="project-tag">Renewable Energy</span>
-                    </div>
-                    <p class="project-description">
-                        Conducted market research and competitive analysis for a novel alloy in alkaline water electrolysis, identifying high-potential customer segments and developing a commercialization strategy projected to <strong class="highlight-teal"> achieve 15% annual revenue growth</strong>.
-                    </p>
-                    <div class="project-buttons">
-                        <ul class="project-links">
-                            <li><span class="arrow">&#8594;</span> <a href="project_2_presentation.pdf" target="_blank" rel="noopener">View Presentation</a></li>
-                            <li><span class="arrow">&#8594;</span> <a href="https://acrobat.adobe.com/id/urn:aaid:sc:AP:c48a9896-0bec-496e-9ca7-8dfa5f118aca" target="_blank" rel="noopener">Read the Report</a></li>
-                            <li><span class="arrow">&#8594;</span> <a href="#" id="watchDemoVideo">Watch Video Demo</a></li>
-                        </ul>
+                    <img class="project-icon" src="project-2.jpg" alt="Project Image">
+                    <div class="project-content">
+                        <h3 class="project-title">♻️ ATI Capstone Project</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">Product Strategy</span>
+                            <span class="project-tag">Renewable Energy</span>
+                        </div>
+                        <p class="project-description">
+                            Conducted market research and competitive analysis for a novel alloy in alkaline water electrolysis, identifying high-potential customer segments and developing a commercialization strategy projected to <strong class="highlight-teal"> achieve 15% annual revenue growth</strong>.
+                        </p>
+                        <div class="project-buttons">
+                            <ul class="project-links">
+                                <li><span class="arrow">&#8594;</span> <a href="project_2_presentation.pdf" target="_blank" rel="noopener">View Presentation</a></li>
+                                <li><span class="arrow">&#8594;</span> <a href="https://acrobat.adobe.com/id/urn:aaid:sc:AP:c48a9896-0bec-496e-9ca7-8dfa5f118aca" target="_blank" rel="noopener">Read the Report</a></li>
+                                <li><span class="arrow">&#8594;</span> <a href="video-player.html?video=project_2_video.mov" target="_blank" rel="noopener">Watch Video Demo</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Project 3: Google Agency Shootout -->
                 <div class="project-card fade-in">
-                    <img class="project-icon" src="project-3.jpg" alt="Project Image" style="height:300px;width:100%;object-fit:cover;border-radius:15px;">
-                    <h3 class="project-title">🛍️ Google Optima</h3>
-                    <div class="project-tags">
-                        <span class="project-tag">B2C</span>
-                        <span class="project-tag">E-commerce</span>
-                    </div>
-                    <p class="project-description">
-                        Led product design for Optima, a product cross-comparison tool for Google Shopping, <strong class="highlight-teal">winning 1st place against 7 competing teams</strong> in a CMU MIIPS pitching contest through innovative feature design and strategic product positioning.
-                    </p>
-                    <div class="project-buttons">
-                        <ul class="project-links">
-                            <li><span class="arrow">&#8594;</span> <a href="project_3.pdf" target="_blank" rel="noopener">View Presentation</a></li>
-                        </ul>
+                    <img class="project-icon" src="project-3.jpg" alt="Project Image">
+                    <div class="project-content">
+                        <h3 class="project-title">🛍️ Google Optima</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">B2C</span>
+                            <span class="project-tag">E-commerce</span>
+                        </div>
+                        <p class="project-description">
+                            Led product design for Optima, a product cross-comparison tool for Google Shopping, <strong class="highlight-teal">winning 1st place against 7 competing teams</strong> in a CMU MIIPS pitching contest through innovative feature design and strategic product positioning.
+                        </p>
+                        <div class="project-buttons">
+                            <ul class="project-links">
+                                <li><span class="arrow">&#8594;</span> <a href="project_3.pdf" target="_blank" rel="noopener">View Presentation</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Project 4: Expired Startup -->
                 <div class="project-card fade-in">
-                    <img class="project-icon" src="project-4.png" alt="Project Image" style="height:300px;width:100%;object-fit:cover;border-radius:15px;">
-                    <h3 class="project-title">🔍 Expired Solutions (CMU Startup)</h3>
-                    <div class="project-tags">
-                        <span class="project-tag">B2B</span>
-                        <span class="project-tag">Startup</span>
-                    </div>
-                    <p class="project-description">
-                        Led user research and product design for an AI-powered produce freshness management system, helping the team <strong class="highlight-teal">secure $1k+</strong> from the Gebhardt Sandbox Fund. 
-                    </p>
-                    <div class="project-buttons">
-                        <ul class="project-links">
-                            <li><span class="arrow">&#8594;</span> <a href="https://expiredsolutions.com/" target="_blank" rel="noopener">Visit Our Website</a></li>
-                        </ul>
+                    <img class="project-icon" src="project-4.png" alt="Project Image">
+                    <div class="project-content">
+                        <h3 class="project-title">🔍 Expired Solutions (CMU Startup)</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">B2B</span>
+                            <span class="project-tag">Startup</span>
+                        </div>
+                        <p class="project-description">
+                            Led user research and product design for an AI-powered produce freshness management system, helping the team <strong class="highlight-teal">secure $1k+</strong> from the Gerald Sandbox Fund. 
+                        </p>
+                        <div class="project-buttons">
+                            <ul class="project-links">
+                                <li><span class="arrow">&#8594;</span> <a href="https://expiredsolutions.com/" target="_blank" rel="noopener">Visit Our Website</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -860,7 +926,7 @@
             // Scroll indicator smooth scroll
             document.querySelectorAll('.scroll-indicator').forEach(function(el) {
                 el.addEventListener('click', function(e) {
-                    if (this.id !== 'watchDemoVideo') {
+                    if (this.id !== 'watchDemoVideo' && this.textContent.trim() !== "Let's Connect") {
                         document.getElementById('projects').scrollIntoView({ 
                             behavior: 'smooth' 
                         });

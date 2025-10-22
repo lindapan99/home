@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Player</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #0a0a0f;
+            color: #ffffff;
+            font-family: 'Montserrat', sans-serif;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        .video-container {
+            width: 100vw;
+            height: 100vh;
+            background: #0a0a0f;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        video {
+            width: 100vw;
+            height: 100vh;
+            object-fit: contain;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="video-container">
+        <video controls autoplay>
+            <source id="videoSource" src="" type="video/quicktime">
+            <source id="videoSource2" src="" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    
+    <script>
+        // Get video filename from URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const videoFile = urlParams.get('video');
+        
+        console.log('Video file:', videoFile); // Debug log
+        
+        if (videoFile) {
+            const video = document.querySelector('video');
+            const source1 = document.getElementById('videoSource');
+            const source2 = document.getElementById('videoSource2');
+            
+            source1.src = videoFile;
+            source2.src = videoFile;
+            
+            // Force video to load
+            video.load();
+            
+            // Try to play the video
+            video.play().catch(function(error) {
+                console.log('Autoplay failed:', error);
+                // If autoplay fails, show controls and let user play manually
+                video.controls = true;
+            });
+        }
+        
+        // Close window with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                window.close();
+            }
+        });
+    </script>
+</body>
+</html>
